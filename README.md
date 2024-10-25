@@ -1,5 +1,11 @@
-# Mantine Next Template
+# Welcow
 
-Get started with the template by clicking `Use this template` button on the top of the page.
+Using dependencies:
+
+- PostgresQL
+- Prisma ORM
+- Mantine
+- Next.js 14
+- Typescript
 
 [Documentation](https://mantine.dev/guides/next/)

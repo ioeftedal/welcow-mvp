@@ -1,0 +1,291 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Farm {
+  id                         String                       @id @default(uuid()) @db.Uuid
+  country                    String?
+  address                    String?
+  zip                        String?
+  town                       String?
+  visit_date_arranged        String
+  visit_date_actual          String?
+  id_number                  String
+  visit_completed            Boolean?                     @default(false)
+  preVisit                   PreVisit?
+  score                      Score?
+  contactPersons             ContactPerson[]              @relation("ContactPersons")
+  herd                       Herd?
+  groups                     Group[]                      @relation("Groups")
+  SocialBehaviourAndCoughing SocialBehaviourAndCoughing[] @relation("SocialBehaviourAndCoughing")
+  resources                  Resources[]                  @relation("Resources")
+  waterPoints                WaterPoint[]                 @relation("WaterPoint")
+  avoidanceDistanceTests     AvoidanceDistanceTest[]      @relation("AvoidanceDistanceTest")
+  clinicalScoring            ClinicalScoring[]            @relation("ClinicalScoring")
+}
+
+model PreVisit {
+  id                    String   @id @default(uuid()) @db.Uuid
+  herd_size             Int?
+  sample_size           Int?
+  nr_groups             Int?
+  pregheifers_mixed     Boolean?
+  drycows_mixed         Boolean?
+  bull                  Boolean?
+  bull_sep              Int?
+  feeding               String?
+  milking_system        Int?
+  morning_routines      String?
+  headlock              Boolean?
+  nr_headlocks          Int?
+  on_pasture            Boolean?
+  date_last_claw_trim   String?
+  interference          String?
+  stockperson_available Boolean?
+  farm                  Farm     @relation(fields: [farmId], references: [id])
+  farmId                String   @unique @db.Uuid
+}
+
+model Score {
+  id                             String @id @default(uuid()) @db.Uuid
+  absence_of_prolonged_hunger    Float  @db.Real
+  absence_of_prolonged_thirst    Float  @db.Real
+  comfort_around_resting         Float  @db.Real
+  ease_of_movement               Float  @db.Real
+  absence_of_injuries            Float  @db.Real
+  absence_of_disease             Float  @db.Real
+  absence_of_pain                Float  @db.Real
+  expression_of_social_behaviors Float  @db.Real
+  expression_of_other_behaviors  Float  @db.Real
+  good_human_animal_relationship Float  @db.Real
+  positive_emotional_state       Float  @db.Real
+  principle_good_feeding         Float  @db.Real
+  principle_good_housing         Float  @db.Real
+  principle_good_health          Float  @db.Real
+  principle_good_behavior        Float  @db.Real
+  welfare_category               String
+  farm                           Farm   @relation(fields: [farmId], references: [id])
+  farmId                         String @unique @db.Uuid
+}
+
+model ContactPerson {
+  id      Int     @id @default(autoincrement())
+  name    String
+  phone_a String
+  phone_b String?
+  email   String?
+  farm    Farm    @relation("ContactPersons", fields: [farmId], references: [id])
+  farmId  String  @db.Uuid
+}
+
+model Herd {
+  id                           String                        @id @default(uuid()) @db.Uuid
+  farm                         Farm                          @relation(fields: [farmId], references: [id])
+  farmId                       String                        @unique @db.Uuid
+  lyingTimeAndCollisions       LyingTimeAndCollision[]       @relation("LyingTimeAndCollisions")
+  managementQuestionnaire      ManagementQuestionnaire?
+  qualitativeBehaviourAnalysis QualitativeBehaviourAnalysis?
+}
+
+model LyingTimeAndCollision {
+  id        Int    @id @default(autoincrement())
+  lie_t     Float  @db.Real
+  collision String
+  herd      Herd   @relation("LyingTimeAndCollisions", fields: [herdId], references: [id])
+  herdId    String @db.Uuid
+}
+
+model ManagementQuestionnaire {
+  id                    String   @id @default(uuid()) @db.Uuid
+  temp_in               Float?   @db.Real
+  temp_out              Float?   @db.Real
+  pasture_access        Boolean
+  pasture_days_year     Int
+  pasture_hours_day     Int
+  pasture_days_comment  String?
+  outdoor_access        Boolean?
+  outdoor_days_year     Int?
+  outdoor_hours_day     Int?
+  loose_housed          Boolean
+  nr_dystocia_12_mos    Int
+  nr_downercows_12_mos  Int
+  nr_mortality_12_mos   Int
+  disb_deho_on_farm     Int
+  disb_deho_method      Int
+  hot_air               Int?
+  disb_deho_anaesthesia Int
+  disb_deho_analgesia   Int
+  td_on_farm            Int
+  td_method             Int
+  td_anaesthesia        Int
+  td_analgesia          Int
+  calf_mother_time      Int?
+  singlebox_time        Int?
+  milk_volume_daily     Float?   @db.Real
+  colostrum_volume      Float?   @db.Real
+  concentrate_age       Int?
+  roughage_age          Int?
+  water_age             Int?
+  fav_cow               Boolean?
+  special_measure       Boolean?
+  special_measure_desc  String?
+  nr_milkrec_3mos       Int?
+  avg_dairy_cow_12mos   Int?
+  avg_calvings_year     Int?
+  pct_scc400k_3mos      Float?   @db.Real
+  herd                  Herd     @relation(fields: [herdId], references: [id])
+  herdId                String   @unique @db.Uuid
+}
+
+model QualitativeBehaviourAnalysis {
+  id                  String @id @default(uuid()) @db.Uuid
+  active              Int
+  relaxed             Int
+  fearful             Int
+  agitated            Int
+  calm                Int
+  content             Int
+  indifferent         Int
+  frustrated          Int
+  friendly            Int
+  bored               Int
+  playful             Int
+  positively_occupied Int
+  lively              Int
+  inquisitive         Int
+  irritable           Int
+  calmless_uneasy     Int
+  sociable            Int
+  apathetic           Int
+  happy               Int
+  distressed          Int
+  herd                Herd   @relation(fields: [herdId], references: [id])
+  herdId              String @unique @db.Uuid
+}
+
+model Group {
+  id           Int    @id @default(autoincrement())
+  group_name   String
+  group_size   Int
+  group_sample Int
+  farm         Farm   @relation("Groups", fields: [farmId], references: [id])
+  farmId       String @db.Uuid
+}
+
+model SocialBehaviourAndCoughing {
+  id               String @id @default(uuid()) @db.Uuid
+  segment          String
+  group_name       String
+  start            String
+  finish           String
+  duration         Float  @db.Real
+  standing_start   Int
+  standing_finish  Int
+  eat_drink_start  Int
+  eat_drink_finish Int
+  lying_start      Int
+  lying_finish     Int
+  sum_start        Int
+  sum_finish       Int
+  lying_out_start  Int
+  lying_out_finish Int
+  headbutt         Int
+  displacement     Int
+  fighting         Int
+  chasing          Int
+  chasing_up       Int
+  coughing         Int
+  farm             Farm   @relation("SocialBehaviourAndCoughing", fields: [farmId], references: [id])
+  farmId           String @db.Uuid
+}
+
+model Resources {
+  id         String @id @default(uuid()) @db.Uuid
+  group_name String
+  nr_wps     Int
+  farm       Farm   @relation("Resources", fields: [farmId], references: [id])
+  farmId     String @db.Uuid
+}
+
+model WaterPoint {
+  id                   Int    @id @default(autoincrement())
+  group_name           String
+  nr_animals_using_wps Int?
+  type                 Int
+  troughlength         Int?
+  cleanliness          Int
+  functioning          String
+  waterflow            String
+  farm                 Farm   @relation("WaterPoint", fields: [farmId], references: [id])
+  farmId               String @db.Uuid
+}
+
+model AvoidanceDistanceTest {
+  id               String  @id @default(uuid()) @db.Uuid
+  group_name       String
+  ear_tag          String
+  side             String
+  a_d_t1           Int
+  a_d_t2           Int?
+  nasal_discharge  String
+  ocular_discharge String
+  comment          String?
+  farm             Farm    @relation("AvoidanceDistanceTest", fields: [farmId], references: [id])
+  farmId           String  @db.Uuid
+}
+
+model ClinicalScoring {
+  id                       String  @id @default(uuid()) @db.Uuid
+  group_name               String
+  ear_tag                  String
+  side                     String
+  breed                    Int
+  bcs_wq                   Int
+  bcs_std                  Float?  @db.Real
+  clean_scr_lower_hindleg  Int
+  clean_scr_upper_hindleg  Int
+  clean_scr_udderwq        Int
+  clean_scr_udder          Int?
+  clean_scr_teats          Int?
+  integ_tarsus             Int
+  nr_hairless_tarsus       Int?
+  nr_lesion_tarsus         Int?
+  nr_swelling_tarsus       Int?
+  integ_hindquarter        Int
+  nr_hairless_hq           Int?
+  nr_lesion_hq             Int?
+  nr_swelling_hq           Int?
+  integ_neck_shoulder_back Int
+  nr_hairless_nsb          Int?
+  nr_lesion_nsb            Int?
+  nr_swelling_nsb          Int?
+  integ_carpus             Int
+  nr_hairless_carpus       Int?
+  nr_lesion_carpus         Int?
+  nr_swelling_carpus       Int?
+  integ_flank_side_udder   Int
+  nr_hairless_fsu          Int?
+  nr_lesion_fsu            Int?
+  nr_swelling_fsu          Int?
+  integ_other              Int
+  integ_other_specify      String?
+  tail_broken              Int?
+  hampered_respiration     Int
+  diarrhoea                Int
+  vulval_discharge         Int
+  lameness                 Int
+  comment                  String?
+  farm                     Farm    @relation("ClinicalScoring", fields: [farmId], references: [id])
+  farmId                   String  @db.Uuid
+}
