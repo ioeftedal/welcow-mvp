@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
 
@@ -302,5 +303,26 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error('Error saving data:', error);
     return NextResponse.json({ message: 'Failed to save data', error }, { status: 500 });
+  }
+}
+
+export async function GET() {
+  try {
+    // Fetch data from multiple models
+    const farms = await prisma.farm.findMany({
+      include: {
+        contactPersons: {
+          select: {
+            name: true,
+            phone_a: true
+          }
+        },
+      },
+    });
+
+    return NextResponse.json(farms);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return NextResponse.json({ error: 'Failed to fetch data' }, { status: 500 });
   }
 }

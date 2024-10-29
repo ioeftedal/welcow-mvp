@@ -2,6 +2,7 @@ import "@mantine/core/styles.css";
 import React from "react";
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import { theme } from "../theme";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 export const metadata = {
   title: "Mantine Next.js template",
@@ -19,9 +20,11 @@ export default function RootLayout({ children }: { children: any }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
-      <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
-      </body>
+      <UserProvider>
+        <body>
+          <MantineProvider theme={theme}>{children}</MantineProvider>
+        </body>
+      </UserProvider>
     </html>
   );
 }
