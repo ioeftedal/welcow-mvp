@@ -47,18 +47,10 @@ export default function NinthPage() {
         </GridCol>
 
         <GridCol>
-          <TextInput
-            label="Farm ID"
-            value={resourcesData.farmId || ""}
-            onChange={(e) => setResourcesData({ ...resourcesData, farmId: e.target.value })}
-          />
-        </GridCol>
-
-        <GridCol>
           <Title>Water Points</Title>
         </GridCol>
 
-        <GridCol span={6}>
+        <GridCol span={12}>
           <TextInput
             label="Group Name"
             value={waterPointData.group_name || ""}
@@ -76,17 +68,19 @@ export default function NinthPage() {
 
         <GridCol span={6}>
           <TextInput
-            label="Type"
-            value={waterPointData.type || ""}
-            onChange={(e) => setWaterPointData({ ...waterPointData, type: Number(e.target.value) })}
+            label="Through Length"
+            rightSection={"cm"}
+            rightSectionWidth={60}
+            value={waterPointData.troughlength || ""}
+            onChange={(e) => setWaterPointData({ ...waterPointData, troughlength: Number(e.target.value) })}
           />
         </GridCol>
 
         <GridCol span={6}>
           <TextInput
-            label="Through Length"
-            value={waterPointData.troughlength || ""}
-            onChange={(e) => setWaterPointData({ ...waterPointData, troughlength: Number(e.target.value) })}
+            label="Type of Water Point"
+            value={waterPointData.type || ""}
+            onChange={(e) => setWaterPointData({ ...waterPointData, type: Number(e.target.value) })}
           />
         </GridCol>
 
@@ -100,7 +94,7 @@ export default function NinthPage() {
 
         <GridCol span={6}>
           <TextInput
-            label="Functioning"
+            label="Function"
             value={waterPointData.functioning || ""}
             onChange={(e) => setWaterPointData({ ...waterPointData, functioning: e.target.value })}
           />
@@ -111,14 +105,6 @@ export default function NinthPage() {
             label="Waterflow"
             value={waterPointData.waterflow || ""}
             onChange={(e) => setWaterPointData({ ...waterPointData, waterflow: e.target.value })}
-          />
-        </GridCol>
-
-        <GridCol span={6}>
-          <TextInput
-            label="Farm ID"
-            value={waterPointData.farmId || ""}
-            onChange={(e) => setWaterPointData({ ...waterPointData, farmId: e.target.value })}
           />
         </GridCol>
 

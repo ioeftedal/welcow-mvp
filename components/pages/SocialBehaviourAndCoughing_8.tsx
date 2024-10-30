@@ -17,11 +17,20 @@ export default function SocialBehaviourAndCoughingForm() {
     <Fieldset>
       <Grid>
 
-        <GridCol>
+        <GridCol style={{ marginBottom: 20 }}>
           <Title>Social Behaviour and Coughing</Title>
         </GridCol>
 
-        <GridCol span={6}>
+        <GridCol span={1}></GridCol>
+
+        <GridCol span={10}>
+          <Title order={3}>Segment - ???</Title>
+        </GridCol>
+
+        <GridCol span={1}></GridCol>
+        <GridCol span={1}></GridCol>
+
+        <GridCol span={5}>
           <TextInput
             label="Segment"
             value={socialBehaviourAndCoughing.segment}
@@ -29,31 +38,143 @@ export default function SocialBehaviourAndCoughingForm() {
           />
         </GridCol>
 
-        <GridCol span={6}>
+        <GridCol span={5}>
           <TextInput
-            label="Group Name"
+            label="Group"
             value={socialBehaviourAndCoughing.group_name}
             onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, group_name: e.target.value })}
           />
         </GridCol>
 
-        <GridCol span={6}>
-          <TextInput
-            label="Start"
-            value={socialBehaviourAndCoughing.start}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, start: e.target.value })}
-          />
+        <GridCol span={1}></GridCol>
+
+        <GridCol></GridCol>
+
+        <GridCol span={0.8}></GridCol>
+
+        <GridCol span={5} style={{ backgroundColor: "#d1e8df", borderRadius: 10 }}>
+          <Fieldset style={{ justifyContent: "center" }}>
+
+            <GridCol>
+              <Title order={3}>Start</Title>
+            </GridCol>
+
+            <GridCol span={12}>
+              <TextInput
+                label="Start Time"
+                value={socialBehaviourAndCoughing.start}
+                onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, start: e.target.value })}
+              />
+            </GridCol>
+
+            <GridCol span={12}>
+              <TextInput
+                label="Standing Start"
+                value={socialBehaviourAndCoughing.standing_start || ""}
+                onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, standing_start: Number(e.target.value) })}
+              />
+            </GridCol>
+
+            <GridCol span={12}>
+              <TextInput
+                label="Eating or Drinking Start"
+                value={socialBehaviourAndCoughing.eat_drink_start || ""}
+                onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, eat_drink_start: Number(e.target.value) })}
+              />
+            </GridCol>
+
+            <GridCol span={12}>
+              <TextInput
+                label="Lying Start"
+                value={socialBehaviourAndCoughing.lying_start || ""}
+                onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, lying_start: Number(e.target.value) })}
+              />
+            </GridCol>
+
+            <GridCol span={12}>
+              <TextInput
+                label="Sum Start"
+                value={socialBehaviourAndCoughing.sum_start || ""}
+                onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, sum_start: Number(e.target.value) })}
+              />
+            </GridCol>
+
+            <GridCol span={12}>
+              <TextInput
+                label="Lying Outside Start"
+                value={socialBehaviourAndCoughing.lying_out_start || ""}
+                onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, lying_out_start: Number(e.target.value) })}
+              />
+            </GridCol>
+
+          </Fieldset>
         </GridCol>
 
-        <GridCol span={6}>
-          <TextInput
-            label="Finish"
-            value={socialBehaviourAndCoughing.finish}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, finish: e.target.value })}
-          />
+        <GridCol span={0.4}></GridCol>
+
+        <GridCol span={5} style={{ backgroundColor: "#d1e8df", borderRadius: 10 }}>
+          <Fieldset style={{ justifyContent: "center" }}>
+
+            <GridCol>
+              <Title order={3}>Finish</Title>
+            </GridCol>
+
+            <GridCol span={12}>
+              <TextInput
+                label="Finish Time"
+                value={socialBehaviourAndCoughing.finish}
+                onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, finish: e.target.value })}
+              />
+            </GridCol>
+
+            <GridCol span={12}>
+              <TextInput
+                label="Standing Finish"
+                value={socialBehaviourAndCoughing.standing_finish || ""}
+                onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, standing_finish: Number(e.target.value) })}
+              />
+            </GridCol>
+
+            <GridCol span={12}>
+              <TextInput
+                label="Eating or Drinking Finish"
+                value={socialBehaviourAndCoughing.eat_drink_finish || ""}
+                onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, eat_drink_finish: Number(e.target.value) })}
+              />
+            </GridCol>
+
+            <GridCol span={12}>
+              <TextInput
+                label="Lying Finish"
+                value={socialBehaviourAndCoughing.lying_finish || ""}
+                onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, lying_finish: Number(e.target.value) })}
+              />
+            </GridCol>
+
+            <GridCol span={12}>
+              <TextInput
+                label="Sum Finish"
+                value={socialBehaviourAndCoughing.sum_finish || ""}
+                onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, sum_finish: Number(e.target.value) })}
+              />
+            </GridCol>
+
+            <GridCol span={12}>
+              <TextInput
+                label="Lying Outside Finish"
+                value={socialBehaviourAndCoughing.lying_out_finish || ""}
+                onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, lying_out_finish: Number(e.target.value) })}
+              />
+            </GridCol>
+
+          </Fieldset>
         </GridCol>
 
-        <GridCol span={6}>
+        <GridCol span={0.8}></GridCol>
+
+        <GridCol span={1}></GridCol>
+
+        <GridCol span={10}>
           <TextInput
             label="Duration"
             value={socialBehaviourAndCoughing.duration || ""}
@@ -61,87 +182,10 @@ export default function SocialBehaviourAndCoughingForm() {
           />
         </GridCol>
 
-        <GridCol span={6}>
-          <TextInput
-            label="Standing Start"
-            value={socialBehaviourAndCoughing.standing_start || ""}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, standing_start: Number(e.target.value) })}
-          />
-        </GridCol>
+        <GridCol span={1}></GridCol>
+        <GridCol span={1}></GridCol>
 
-        <GridCol span={6}>
-          <TextInput
-            label="Standing Finish"
-            value={socialBehaviourAndCoughing.standing_finish || ""}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, standing_finish: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={6}>
-          <TextInput
-            label="Eat/Drink Start"
-            value={socialBehaviourAndCoughing.eat_drink_start || ""}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, eat_drink_start: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={6}>
-          <TextInput
-            label="Eat/Drink Finish"
-            value={socialBehaviourAndCoughing.eat_drink_finish || ""}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, eat_drink_finish: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={6}>
-          <TextInput
-            label="Lying Start"
-            value={socialBehaviourAndCoughing.lying_start || ""}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, lying_start: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={6}>
-          <TextInput
-            label="Lying Finish"
-            value={socialBehaviourAndCoughing.lying_finish || ""}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, lying_finish: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={6}>
-          <TextInput
-            label="Sum Start"
-            value={socialBehaviourAndCoughing.sum_start || ""}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, sum_start: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={6}>
-          <TextInput
-            label="Sum Finish"
-            value={socialBehaviourAndCoughing.sum_finish || ""}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, sum_finish: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={6}>
-          <TextInput
-            label="Lying Out Start"
-            value={socialBehaviourAndCoughing.lying_out_start || ""}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, lying_out_start: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={6}>
-          <TextInput
-            label="Lying Out Finish"
-            value={socialBehaviourAndCoughing.lying_out_finish || ""}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, lying_out_finish: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={6}>
+        <GridCol span={5}>
           <TextInput
             label="Headbutt"
             value={socialBehaviourAndCoughing.headbutt || ""}
@@ -149,7 +193,7 @@ export default function SocialBehaviourAndCoughingForm() {
           />
         </GridCol>
 
-        <GridCol span={6}>
+        <GridCol span={5}>
           <TextInput
             label="Displacement"
             value={socialBehaviourAndCoughing.displacement || ""}
@@ -157,7 +201,10 @@ export default function SocialBehaviourAndCoughingForm() {
           />
         </GridCol>
 
-        <GridCol span={6}>
+        <GridCol span={1}></GridCol>
+        <GridCol span={1}></GridCol>
+
+        <GridCol span={5}>
           <TextInput
             label="Fighting"
             value={socialBehaviourAndCoughing.fighting || ""}
@@ -165,7 +212,7 @@ export default function SocialBehaviourAndCoughingForm() {
           />
         </GridCol>
 
-        <GridCol span={6}>
+        <GridCol span={5}>
           <TextInput
             label="Chasing"
             value={socialBehaviourAndCoughing.chasing || ""}
@@ -173,7 +220,10 @@ export default function SocialBehaviourAndCoughingForm() {
           />
         </GridCol>
 
-        <GridCol span={6}>
+        <GridCol span={1}></GridCol>
+        <GridCol span={1}></GridCol>
+
+        <GridCol span={5}>
           <TextInput
             label="Chasing Up"
             value={socialBehaviourAndCoughing.chasing_up || ""}
@@ -181,19 +231,11 @@ export default function SocialBehaviourAndCoughingForm() {
           />
         </GridCol>
 
-        <GridCol span={6}>
+        <GridCol span={5}>
           <TextInput
             label="Coughing"
             value={socialBehaviourAndCoughing.coughing || ""}
             onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, coughing: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={6}>
-          <TextInput
-            label="Farm ID"
-            value={socialBehaviourAndCoughing.farmId}
-            onChange={(e) => setSocialBehaviourAndCoughing({ ...socialBehaviourAndCoughing, farmId: e.target.value })}
           />
         </GridCol>
 
