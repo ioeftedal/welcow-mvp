@@ -16,6 +16,7 @@ import TenthPage from '../../components/pages/ClinicalScoring_10';
 import EleventhPage from '../../components/pages/AvoidanceDistanceTesting_11';
 import Header from '../../components/header/Header';
 
+
 export default function AddVisit() {
   const [activePage, setActivePage] = useState(1);
 
@@ -131,6 +132,7 @@ export default function AddVisit() {
         onChange={handlePageChange}
         siblings={7}
         total={11}
+        color='#009a80'
       >
         <Group gap={9} justify="center">
           <Pagination.First />

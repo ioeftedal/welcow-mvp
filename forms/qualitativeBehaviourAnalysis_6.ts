@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export interface QualitativeBehaviourAnalysis {
   id: string;
   active: number;
@@ -25,7 +27,7 @@ export interface QualitativeBehaviourAnalysis {
 
 export function defaultQualitativeBehaviourAnalysis(): QualitativeBehaviourAnalysis {
   return {
-    id: 'uuid()', // You'll need to replace this with an actual UUID generation method
+    id: uuidv4(), // You'll need to replace this with an actual UUID generation method
     active: 0,
     relaxed: 0,
     fearful: 0,

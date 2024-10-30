@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export interface AvoidanceDistanceTest {
   id: string;
   group_name: string;
@@ -13,7 +15,7 @@ export interface AvoidanceDistanceTest {
 
 export function defaultAvoidanceDistanceTest(): AvoidanceDistanceTest {
   return {
-    id: 'uuid()', // You'll need to replace this with an actual UUID generation method
+    id: uuidv4(), // You'll need to replace this with an actual UUID generation method
     group_name: '',
     ear_tag: '',
     side: '',

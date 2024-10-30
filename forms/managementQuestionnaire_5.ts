@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export interface ManagementQuestionnaire {
   id: string;
   temp_in?: number;
@@ -41,7 +43,7 @@ export interface ManagementQuestionnaire {
 
 export function defaultManagementQuestionnaire(): ManagementQuestionnaire {
   return {
-    id: 'uuid()', // You'll need to replace this with an actual UUID generation method
+    id: uuidv4(), // You'll need to replace this with an actual UUID generation method
     temp_in: undefined,
     temp_out: undefined,
     pasture_access: false,

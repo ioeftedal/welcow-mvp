@@ -5,10 +5,12 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { IconCheck, IconDownload, IconListCheck, IconX } from '@tabler/icons-react';
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Dashboard() {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
-  const [elements, setElements] = useState<any[]>([]); // Replace 'any' with your specific type if known
+  const [elements, setElements] = useState<any[]>([]);
+  const router = useRouter();
 
   // Fetch data from the API
   useEffect(() => {
@@ -16,7 +18,7 @@ export default function Dashboard() {
       try {
         const response = await fetch('/api'); // Adjust the endpoint as necessary
         const data = await response.json();
-        setElements(data);
+        setElements(Array.isArray(data) ? data : []);
       } catch (error) {
         console.error("Failed to fetch data:", error);
       }
@@ -24,6 +26,10 @@ export default function Dashboard() {
 
     fetchData();
   }, []);
+
+  const addVisit = () => {
+    router.push("/add-visit");
+  }
 
   const rows = elements.map((element) => (
     <Table.Tr
@@ -62,7 +68,7 @@ export default function Dashboard() {
       <Grid>
 
         <GridCol span={12}>
-          <Button size="lg" leftSection={<IconListCheck size={24} />} fullWidth>
+          <Button onClick={addVisit} size="lg" leftSection={<IconListCheck size={24} />} fullWidth>
             ADD VISIT
           </Button>
         </GridCol>

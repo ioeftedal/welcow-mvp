@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 export interface Score {
   id: string;
   absence_of_prolonged_hunger: number;
@@ -21,7 +22,7 @@ export interface Score {
 
 export function defaultScore(): Score {
   return {
-    id: 'uuid()', // You'll need to replace this with an actual UUID generation method
+    id: uuidv4(), // You'll need to replace this with an actual UUID generation method
     absence_of_prolonged_hunger: 0.0,
     absence_of_prolonged_thirst: 0.0,
     comfort_around_resting: 0.0,

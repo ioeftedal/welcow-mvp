@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import { LyingTimeAndCollision, ManagementQuestionnaire, QualitativeBehaviourAnalysis } from "@prisma/client";
 
 export interface Herd {
@@ -11,7 +13,7 @@ export interface Herd {
 // Default values for fields
 export function defaultHerd(): Herd {
   return {
-    id: 'uuid()', // You’ll need to replace this with an actual UUID generation method
+    id: uuidv4(), // You’ll need to replace this with an actual UUID generation method
     farmId: '',
     lyingTimeAndCollisions: [],
     managementQuestionnaire: undefined,

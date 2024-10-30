@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export interface PreVisit {
   id: string;
   herd_size?: number;
@@ -21,7 +23,7 @@ export interface PreVisit {
 
 export function defaultPreVisit(): PreVisit {
   return {
-    id: 'uuid()', // You'll need to replace this with an actual UUID generation method
+    id: uuidv4(), // You'll need to replace this with an actual UUID generation method
     herd_size: undefined,
     sample_size: undefined,
     nr_groups: undefined,

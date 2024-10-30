@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export interface SocialBehaviourAndCoughing {
   id: string;
   segment: string;
@@ -26,7 +28,7 @@ export interface SocialBehaviourAndCoughing {
 
 export function defaultSocialBehaviourAndCoughing(): SocialBehaviourAndCoughing {
   return {
-    id: 'uuid()', // You'll need to replace this with an actual UUID generation method
+    id: uuidv4(), // You'll need to replace this with an actual UUID generation method
     segment: '',
     group_name: '',
     start: '',

@@ -2,6 +2,39 @@ import { Button, Checkbox, Fieldset, Grid, GridCol, TextInput, Title } from "@ma
 import { useEffect, useState } from "react";
 import { defaultFarm, Farm } from "../../forms/farm_1";
 import { defaultContactPerson, ContactPerson } from "../../forms/contactPerson_1";
+import axios from 'axios';
+
+// const fetchUserData = async (userId: string) => {
+//   if (!userId) return;
+//   try {
+//     const response = await axios.get(`https://login.auth0.com/api/v2/users/${userId}`, {
+//       headers: {
+//         'Accept': 'application/json'
+//       }
+//     });
+//     console.log(response.data);
+//     return response.data;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
+
+// let config = {
+//   method: 'get',
+//   maxBodyLength: Infinity,
+//   url: 'https://login.auth0.com/api/v2/users/:id',
+//   headers: {
+//     'Accept': 'application/json'
+//   }
+// };
+//
+// axios.request(config)
+//   .then((response) => {
+//     console.log(JSON.stringify(response.data));
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
 
 export default function FirstPage() {
   const [farmData, setFarmData] = useState<Farm>(() => {
@@ -23,6 +56,19 @@ export default function FirstPage() {
   useEffect(() => {
     localStorage.setItem("contactPersonData", JSON.stringify(contactPersonData));
   }, [contactPersonData]);
+
+
+  // useEffect(() => {
+  //   const userId = "some-user-id"; // Replace this with the actual user ID
+  //   const loadUserData = async () => {
+  //     const userData = await fetchUserData(userId);
+  //     if (userData) {
+  //       setFarmData(prevData => ({ ...prevData, user_id: userData.user_id }));
+  //     }
+  //   };
+  //   loadUserData();
+  // }, []);
+  //
 
   return (
     <Fieldset>

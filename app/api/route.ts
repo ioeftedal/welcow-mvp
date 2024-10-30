@@ -11,6 +11,7 @@ export async function POST(req: NextRequest) {
 
     const farm = await prisma.farm.create({
       data: {
+        user_id: data.farmData?.user_id,
         country: data.farmData?.country,
         address: data.farmData?.address,
         zip: data.farmData?.zip,
