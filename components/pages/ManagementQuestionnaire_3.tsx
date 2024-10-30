@@ -1,9 +1,9 @@
 import { Button, Checkbox, Fieldset, Grid, GridCol, NumberInput, Textarea, TextInput, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { defaultManagementQuestionnaire, ManagementQuestionnaire } from "../../forms/managementQuestionnaire_5";
+import { defaultManagementQuestionnaire, ManagementQuestionnaire } from "../../forms/managementQuestionnaire_3";
 import { IconTemperatureCelsius } from "@tabler/icons-react";
 
-export default function FifthPage() {
+export default function ThirdPage() {
   const [managementQuestionnaireData, setManagementQuestionnaireData] = useState<ManagementQuestionnaire>(() => {
     const savedManagementQuestionnaireData = localStorage.getItem("managementQuestionnaireData");
     return savedManagementQuestionnaireData ? JSON.parse(savedManagementQuestionnaireData) : defaultManagementQuestionnaire();

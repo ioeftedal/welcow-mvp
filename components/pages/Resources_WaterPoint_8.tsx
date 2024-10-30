@@ -1,9 +1,9 @@
-import { Button, Fieldset, Grid, GridCol, Text, TextInput, Title } from "@mantine/core";
+import { Fieldset, Grid, GridCol, TextInput, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { defaultResources, Resources } from "../../forms/resources_9";
-import { defaultWaterPoint, WaterPoint } from "../../forms/waterPoint_9";
+import { defaultResources, Resources } from "../../forms/resources_8";
+import { defaultWaterPoint, WaterPoint } from "../../forms/waterPoint_8";
 
-export default function NinthPage() {
+export default function EighthPage() {
   const [resourcesData, setResourcesData] = useState<Resources>(() => {
     const savedResourcesData = localStorage.getItem("resourcesData");
     return savedResourcesData ? JSON.parse(savedResourcesData) : defaultResources();
@@ -26,11 +26,20 @@ export default function NinthPage() {
     <Fieldset>
       <Grid>
 
+        {/* TODO: Make it possible to add multiple accounts of pens/groups */}
         <GridCol>
           <Title>Resources</Title>
         </GridCol>
 
         <GridCol>
+          <Title order={2}>Pens / Groups</Title>
+        </GridCol>
+
+        <GridCol>
+          <Title order={3}>Pen - ???</Title>
+        </GridCol>
+
+        <GridCol span={6}>
           <TextInput
             label="Group Name"
             value={resourcesData.group_name || ""}
@@ -38,7 +47,7 @@ export default function NinthPage() {
           />
         </GridCol>
 
-        <GridCol>
+        <GridCol span={6}>
           <TextInput
             label="Number of Water Points"
             value={resourcesData.nr_wps || ""}
@@ -46,8 +55,13 @@ export default function NinthPage() {
           />
         </GridCol>
 
+        {/* TODO: Make it possible to add multiple accounts of water points */}
         <GridCol>
-          <Title>Water Points</Title>
+          <Title order={2}>Water Points</Title>
+        </GridCol>
+
+        <GridCol>
+          <Title order={3}>Water Point - ???</Title>
         </GridCol>
 
         <GridCol span={12}>

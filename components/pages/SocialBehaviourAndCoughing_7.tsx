@@ -1,9 +1,9 @@
 
 import { useEffect, useState } from "react";
-import { TextInput, GridCol, Grid, Fieldset, Title, Button } from "@mantine/core";
-import { defaultSocialBehaviourAndCoughing, SocialBehaviourAndCoughing } from "../../forms/socialBehaviourAndCoughing_8";
+import { TextInput, GridCol, Grid, Fieldset, Title } from "@mantine/core";
+import { defaultSocialBehaviourAndCoughing, SocialBehaviourAndCoughing } from "../../forms/socialBehaviourAndCoughing_7";
 
-export default function SocialBehaviourAndCoughingForm() {
+export default function SeventhPage() {
   const [socialBehaviourAndCoughing, setSocialBehaviourAndCoughing] = useState<SocialBehaviourAndCoughing>(() => {
     const savedSocialBehaviourAndCoughing = localStorage.getItem("socialBehaviourAndCoughingData");
     return savedSocialBehaviourAndCoughing ? JSON.parse(savedSocialBehaviourAndCoughing) : defaultSocialBehaviourAndCoughing();

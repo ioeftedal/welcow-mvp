@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { TextInput, GridCol, Grid, Text, Title, Button, Fieldset } from "@mantine/core";
-import { defaultGroup, Group } from "../../forms/group_7";
+import { defaultGroup, Group } from "../../forms/group_2";
 
 export default function SeventhPage() {
   const [groupData, setGroupData] = useState<Group>(() => {

@@ -1,8 +1,8 @@
-import { Button, Fieldset, Grid, GridCol, TextInput, Title } from "@mantine/core";
+import { Fieldset, Grid, GridCol, TextInput, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { ClinicalScoring, defaultClinicalScoring } from "../../forms/clinicalScoring_10";
+import { ClinicalScoring, defaultClinicalScoring } from "../../forms/clinicalScoring_9";
 
-export default function TenthPage() {
+export default function NinthPage() {
   const [clinicalScoringData, setClinicalScoringData] = useState<ClinicalScoring>(() => {
     const savedClinicalScoringData = localStorage.getItem("clinicalScoringData");
     return savedClinicalScoringData ? JSON.parse(savedClinicalScoringData) : defaultClinicalScoring();

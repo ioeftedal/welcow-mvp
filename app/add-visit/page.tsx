@@ -4,15 +4,14 @@ import { useState } from 'react';
 import { Button, Grid, GridCol, Group, Pagination } from '@mantine/core';
 import FirstPage from '../../components/pages/Farm_ContactPerson_1';
 import SecondPage from '../../components/pages/PreVisit_2';
-import ThirdPage from '../../components/pages/Score_3';
-import FourthPage from '../../components/pages/Herd_LyingTimeAndCollision_4';
-import FifthPage from '../../components/pages/ManagementQuestionnaire_5';
-import SixthPage from '../../components/pages/QualitativeBehaviourAnalysis_6';
-import SeventhPage from '../../components/pages/Group_7';
-import EighthPage from '../../components/pages/SocialBehaviourAndCoughing_8';
-import NinthPage from '../../components/pages/Resources_WaterPoint_9';
-import TenthPage from '../../components/pages/ClinicalScoring_10';
-import EleventhPage from '../../components/pages/AvoidanceDistanceTesting_11';
+import ThirdPage from '../../components/pages/ManagementQuestionnaire_3';
+import FourthPage from '../../components/pages/AvoidanceDistanceTesting_4';
+import FifthPage from '../../components/pages/QualitativeBehaviourAnalysis_5';
+import SixthPage from '../../components/pages/Herd_LyingTimeAndCollision_6';
+import SeventhPage from '../../components/pages/SocialBehaviourAndCoughing_7';
+import EighthPage from '../../components/pages/Resources_WaterPoint_8';
+import NinthPage from '../../components/pages/ClinicalScoring_9';
+import TenthPage from '../../components/pages/Score_10';
 import Header from '../../components/header/Header';
 
 
@@ -83,7 +82,7 @@ export default function AddVisit() {
   };
 
   const handleNextPage = () => {
-    if (activePage < 11) {
+    if (activePage < 10) {
       setActivePage(activePage + 1);
     }
   };
@@ -117,8 +116,6 @@ export default function AddVisit() {
         return <NinthPage />;
       case 10:
         return <TenthPage />;
-      case 11:
-        return <EleventhPage />;
       default:
         return null;
     }
@@ -131,7 +128,7 @@ export default function AddVisit() {
         value={activePage}
         onChange={handlePageChange}
         siblings={7}
-        total={11}
+        total={10}
         color='#009a80'
         style={{ paddingTop: 40 }}
         size="lg"
@@ -157,7 +154,7 @@ export default function AddVisit() {
         </GridCol>
         <GridCol span={6}>
           <Button size="md" fullWidth onClick={activePage === 11 ? handleSubmit : handleNextPage}>
-            {activePage === 11 ? "Submit" : "Next"}
+            {activePage === 10 ? "Submit" : "Next"}
           </Button>
         </GridCol>
       </Grid>

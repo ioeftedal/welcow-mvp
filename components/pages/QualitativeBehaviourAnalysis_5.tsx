@@ -1,8 +1,8 @@
-import { Button, Fieldset, Grid, GridCol, Slider, Text, TextInput, Title } from "@mantine/core";
+import { Fieldset, Grid, GridCol, Slider, Text, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { defaultQualitativeBehaviourAnalysis, QualitativeBehaviourAnalysis } from "../../forms/qualitativeBehaviourAnalysis_6";
+import { defaultQualitativeBehaviourAnalysis, QualitativeBehaviourAnalysis } from "../../forms/qualitativeBehaviourAnalysis_5";
 
-export default function SixthPage() {
+export default function FifthPage() {
   const [qualitativeBehaviourAnalysis, setQualitativeBehaviourAnalysis] = useState<QualitativeBehaviourAnalysis>(() => {
     const savedQualitativeBehaviourAnalysis = localStorage.getItem("qualitativeBehaviourAnalysisData");
     return savedQualitativeBehaviourAnalysis ? JSON.parse(savedQualitativeBehaviourAnalysis) : defaultQualitativeBehaviourAnalysis();

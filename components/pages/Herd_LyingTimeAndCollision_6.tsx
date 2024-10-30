@@ -1,9 +1,9 @@
 import { Button, Fieldset, Grid, GridCol, TextInput, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { defaultHerd, Herd } from "../../forms/herd_4";
-import { defaultLyingTimeAndCollision, LyingTimeAndCollision } from "../../forms/lyingTimeAndCollision_4";
+import { defaultLyingTimeAndCollision, LyingTimeAndCollision } from "../../forms/lyingTimeAndCollision_6";
 
-export default function FourthPage() {
+export default function SixthPage() {
   const [herdData, setHerdData] = useState<Herd>(() => {
     const savedHerdData = localStorage.getItem("herdData");
     return savedHerdData ? JSON.parse(savedHerdData) : defaultHerd();
@@ -27,19 +27,12 @@ export default function FourthPage() {
       <Grid>
 
         <GridCol span={12}>
-          <Title>Herd</Title>
-        </GridCol>
-
-        <GridCol span={4}>
-          <TextInput
-            label="Farm ID"
-            value={herdData.farmId || ""}
-            onChange={(e) => setHerdData({ ...herdData, farmId: e.target.value })}
-          />
-        </GridCol>
-
-        <GridCol span={12}>
           <Title>Lying Time and Collision</Title>
+        </GridCol>
+
+        {/* TODO: Make it possible to add multiple registrations */}
+        <GridCol span={12}>
+          <Title order={3}>Registration - ???</Title>
         </GridCol>
 
         <GridCol span={6}>

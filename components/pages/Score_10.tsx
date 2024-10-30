@@ -1,8 +1,8 @@
 import { Button, Fieldset, Grid, GridCol, Textarea, TextInput, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { defaultScore, Score } from "../../forms/score_3";
+import { defaultScore, Score } from "../../forms/score_10";
 
-export default function ThirdPage() {
+export default function TenthPage() {
   const [scoreData, setScoreData] = useState<Score>(() => {
     const savedScoreData = localStorage.getItem("scoreData");
     return savedScoreData ? JSON.parse(savedScoreData) : defaultScore();
