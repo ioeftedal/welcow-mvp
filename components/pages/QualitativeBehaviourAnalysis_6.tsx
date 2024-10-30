@@ -16,7 +16,7 @@ export default function SixthPage() {
     <Fieldset>
       <Grid>
 
-        <GridCol>
+        <GridCol style={{ marginBottom: 20 }}>
           <Title>Qualitative Behaviour Analysis</Title>
         </GridCol>
 

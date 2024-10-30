@@ -1,4 +1,4 @@
-import { Button, Fieldset, Grid, GridCol, Text, TextInput, Title } from "@mantine/core";
+import { Button, Fieldset, Grid, GridCol, Text, Textarea, TextInput, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { AvoidanceDistanceTest, defaultAvoidanceDistanceTest } from "../../forms/avoidanceDistanceTesting_11";
 
@@ -20,19 +20,15 @@ export default function TenthPage() {
           <Title>Avoidance Distance Test</Title>
         </GridCol>
 
-        <GridCol span={6}>
-          <TextInput
-            label="Group Name"
-            value={avoidanceDistanceData.group_name}
-            onChange={(e) => setAvoidanceDistanceData({ ...avoidanceDistanceData, group_name: e.target.value })}
-          />
+        <GridCol>
+          <Title order={4}>Individual - ???</Title>
         </GridCol>
 
-        <GridCol span={6}>
+        <GridCol span={12}>
           <TextInput
-            label="Ear Tag"
-            value={avoidanceDistanceData.ear_tag}
-            onChange={(e) => setAvoidanceDistanceData({ ...avoidanceDistanceData, ear_tag: e.target.value })}
+            label="Group"
+            value={avoidanceDistanceData.group_name}
+            onChange={(e) => setAvoidanceDistanceData({ ...avoidanceDistanceData, group_name: e.target.value })}
           />
         </GridCol>
 
@@ -46,7 +42,15 @@ export default function TenthPage() {
 
         <GridCol span={6}>
           <TextInput
-            label="Avoidance Distance T1"
+            label="Ear Tag"
+            value={avoidanceDistanceData.ear_tag}
+            onChange={(e) => setAvoidanceDistanceData({ ...avoidanceDistanceData, ear_tag: e.target.value })}
+          />
+        </GridCol>
+
+        <GridCol span={6}>
+          <TextInput
+            label="Test"
             value={avoidanceDistanceData.a_d_t1 || ""}
             onChange={(e) => setAvoidanceDistanceData({ ...avoidanceDistanceData, a_d_t1: Number(e.target.value) })}
           />
@@ -54,7 +58,7 @@ export default function TenthPage() {
 
         <GridCol span={6}>
           <TextInput
-            label="Avoidance Distance T2"
+            label="Second Test (If Required)"
             value={avoidanceDistanceData.a_d_t2 || ""}
             onChange={(e) => setAvoidanceDistanceData({ ...avoidanceDistanceData, a_d_t2: Number(e.target.value) })}
           />
@@ -76,23 +80,13 @@ export default function TenthPage() {
           />
         </GridCol>
 
-        <GridCol span={6}>
-          <TextInput
+        <GridCol span={12}>
+          <Textarea
             label="Comment"
             value={avoidanceDistanceData.comment || ""}
             onChange={(e) => setAvoidanceDistanceData({ ...avoidanceDistanceData, comment: e.target.value })}
           />
         </GridCol>
-
-        <GridCol span={6}>
-          <TextInput
-            label="Farm ID"
-            value={avoidanceDistanceData.farmId}
-            onChange={(e) => setAvoidanceDistanceData({ ...avoidanceDistanceData, farmId: e.target.value })}
-          />
-        </GridCol>
-
-        <GridCol></GridCol>
 
       </Grid>
     </Fieldset>

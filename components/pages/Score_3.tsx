@@ -1,4 +1,4 @@
-import { Button, Fieldset, Grid, GridCol, TextInput, Title } from "@mantine/core";
+import { Button, Fieldset, Grid, GridCol, Textarea, TextInput, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { defaultScore, Score } from "../../forms/score_3";
 
@@ -17,7 +17,55 @@ export default function ThirdPage() {
       <Grid>
 
         <GridCol span={12}>
-          <Title>Score</Title>
+          <Title>Overall Score</Title>
+        </GridCol>
+
+        <GridCol span={12}>
+          <Textarea
+            label="Welfare Category"
+            value={scoreData.welfare_category || ""}
+            onChange={(e) => setScoreData({ ...scoreData, welfare_category: e.target.value })}
+          />
+        </GridCol>
+
+        <GridCol span={12}>
+          <Title order={2}>Principle Scoring</Title>
+        </GridCol>
+
+        <GridCol span={3}>
+          <TextInput
+            label="Good Feeding"
+            value={scoreData.principle_good_feeding || ""}
+            onChange={(e) => setScoreData({ ...scoreData, principle_good_feeding: Number(e.target.value) })}
+          />
+        </GridCol>
+
+        <GridCol span={3}>
+          <TextInput
+            label="Good Housing"
+            value={scoreData.principle_good_housing || ""}
+            onChange={(e) => setScoreData({ ...scoreData, principle_good_housing: Number(e.target.value) })}
+          />
+        </GridCol>
+
+        <GridCol span={3}>
+          <TextInput
+            label="Good Health"
+            value={scoreData.principle_good_health || ""}
+            onChange={(e) => setScoreData({ ...scoreData, principle_good_health: Number(e.target.value) })}
+          />
+        </GridCol>
+
+        <GridCol span={3}>
+          <TextInput
+            label="Good Behavior"
+            value={scoreData.principle_good_behavior || ""}
+            onChange={(e) => setScoreData({ ...scoreData, principle_good_behavior: Number(e.target.value) })}
+          />
+        </GridCol>
+
+        <GridCol>
+          <Title order={2}>Criteria Scoring</Title>
         </GridCol>
 
         <GridCol span={4}>
@@ -78,7 +126,7 @@ export default function ThirdPage() {
 
         <GridCol span={4}>
           <TextInput
-            label="Expression of Social Behaviors"
+            label="Social Behaviors"
             value={scoreData.expression_of_social_behaviors || ""}
             onChange={(e) => setScoreData({ ...scoreData, expression_of_social_behaviors: Number(e.target.value) })}
           />
@@ -86,7 +134,7 @@ export default function ThirdPage() {
 
         <GridCol span={4}>
           <TextInput
-            label="Expression of Other Behaviors"
+            label="Other Behaviors"
             value={scoreData.expression_of_other_behaviors || ""}
             onChange={(e) => setScoreData({ ...scoreData, expression_of_other_behaviors: Number(e.target.value) })}
           />
@@ -94,7 +142,7 @@ export default function ThirdPage() {
 
         <GridCol span={4}>
           <TextInput
-            label="Good Human-Animal Relationship"
+            label="Human Animal Relationship"
             value={scoreData.good_human_animal_relationship || ""}
             onChange={(e) => setScoreData({ ...scoreData, good_human_animal_relationship: Number(e.target.value) })}
           />
@@ -102,49 +150,9 @@ export default function ThirdPage() {
 
         <GridCol span={4}>
           <TextInput
-            label="Positive Emotional State"
+            label="Emotional State"
             value={scoreData.positive_emotional_state || ""}
             onChange={(e) => setScoreData({ ...scoreData, positive_emotional_state: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={4}>
-          <TextInput
-            label="Principle Good Feeding"
-            value={scoreData.principle_good_feeding || ""}
-            onChange={(e) => setScoreData({ ...scoreData, principle_good_feeding: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={4}>
-          <TextInput
-            label="Principle Good Housing"
-            value={scoreData.principle_good_housing || ""}
-            onChange={(e) => setScoreData({ ...scoreData, principle_good_housing: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={4}>
-          <TextInput
-            label="Principle Good Health"
-            value={scoreData.principle_good_health || ""}
-            onChange={(e) => setScoreData({ ...scoreData, principle_good_health: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={4}>
-          <TextInput
-            label="Principle Good Behavior"
-            value={scoreData.principle_good_behavior || ""}
-            onChange={(e) => setScoreData({ ...scoreData, principle_good_behavior: Number(e.target.value) })}
-          />
-        </GridCol>
-
-        <GridCol span={4}>
-          <TextInput
-            label="Welfare Category"
-            value={scoreData.welfare_category || ""}
-            onChange={(e) => setScoreData({ ...scoreData, welfare_category: e.target.value })}
           />
         </GridCol>
 

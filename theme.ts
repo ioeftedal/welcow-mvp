@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Checkbox, CheckIcon, createTheme, Slider } from "@mantine/core";
+import { Button, Checkbox, CheckIcon, createTheme, Grid, Slider } from "@mantine/core";
 
 export const theme = createTheme({
   /* Put your mantine theme override here */
@@ -14,11 +14,36 @@ export const theme = createTheme({
       }
     },
 
+    Grid: {
+      styles: {
+        root: {
+        }
+      }
+    },
+
+    Fieldset: {
+      styles: {
+        root: {
+          // backgroundColor: "#d1e8df"
+          // padding: 40,
+        }
+      }
+    },
+
+    Title: {
+      styles: {
+        root: {
+          color: "black"
+        }
+      }
+    },
+
     Checkbox: {
       styles: {
         root: {
           display: 'flex',
           alignItems: 'center',
+          margin: 5,
         },
         input: {
           backgroundColor: '#009a80', // Change checkbox color
@@ -41,6 +66,7 @@ export const theme = createTheme({
       styles: {
         root: {
           // Optionally add styles for the root here
+          margin: 10,
         },
         bar: {
           backgroundColor: '#009a80', // Set the track color
@@ -54,26 +80,6 @@ export const theme = createTheme({
         },
         markLabel: {
           color: 'black',               // Change mark label color to white
-        },
-      },
-    },
-  },
-
-  Pagination: {
-    styles: {
-      root: {
-        // Optionally add styles for the root here
-      },
-      item: {
-        // Set the background color for the pagination item
-        backgroundColor: '#009a80', // Color for the inactive page buttons
-        color: 'white',              // Text color for inactive page buttons
-        '&[data-active]': {
-          backgroundColor: '#007a66', // Color for the active page button
-          border: '2px solid white',   // Optional: border for the active button
-        },
-        '&:hover': {
-          backgroundColor: '#007a66', // Color on hover
         },
       },
     },

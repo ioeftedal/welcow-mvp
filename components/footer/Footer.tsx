@@ -1,18 +1,26 @@
-import { Grid, GridCol, Text } from "@mantine/core";
+import { Anchor, Grid, GridCol, Text } from "@mantine/core";
+import { IconSnowflake } from "@tabler/icons-react";
 
 export default function Footer() {
   return (
     <Grid
       style={{
-        backgroundColor: "tan",
-        height: 100,
+        position: "relative",
+        bottom: 0,
+        width: "100%",
+        backgroundColor: "#009a80",
+        color: "white",
+        height: 200,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        marginTop: 50,
+        zIndex: 1000,
       }}
     >
       <GridCol style={{ display: "flex", justifyContent: "center", alignItems: "center" }} span="auto">
-        <Text>Made by Eik</Text>
+        <Anchor size="lg" href="https://www.eiklab.no/" style={{ color: "white" }}>Made by Eik </Anchor>
+        <IconSnowflake size={16} style={{ marginLeft: 5 }} />
       </GridCol>
     </Grid>
   );

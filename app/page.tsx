@@ -56,7 +56,9 @@ export default function Login() {
 
       <GridCol span={12}>
         <Button
+          size="md"
           style={{
+            justifyContent: "center",
             width: 250,
             display: "flex",
             margin: "auto",

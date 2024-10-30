@@ -44,7 +44,7 @@ export default function FourthPage() {
 
         <GridCol span={6}>
           <TextInput
-            label="Lying Time ???"
+            label="Lying Time"
             value={lyingTimeAndCollissionData.lie_t || ""}
             onChange={(e) => setLyingTimeAndCollissionData({ ...lyingTimeAndCollissionData, lie_t: Number(e.target.value) })}
           />

@@ -3,7 +3,7 @@
 import { Button, Checkbox, Fieldset, Grid, GridCol, Table } from "@mantine/core";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import { IconCheck, IconDownload, IconListCheck, IconX } from '@tabler/icons-react';
+import { IconCalculator, IconCheck, IconDownload, IconListCheck, IconX } from '@tabler/icons-react';
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
@@ -15,35 +15,15 @@ export default function Dashboard() {
   const router = useRouter();
   const { user } = useUser();
 
-
-  // // Handle form submission and send each key's data in the request body
-  // const handleSubmit = async (e: React.SyntheticEvent) => {
-  //   e.preventDefault();
-  //   if (user) {
-  //     const formData = user.sub;
-  //     try {
-  //       const response = await fetch('/api', {
-  //         method: 'POST',
-  //         headers: { 'Content-Type': 'application/json' },
-  //         body: JSON.stringify(formData) // Send each section as a separate key in the body
-  //       });
-  //       if (response.ok) {
-  //         console.log("Data posted successfully!");
-  //       } else {
-  //         console.error("Failed to post data:", response.statusText);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error posting data:", error);
-  //     }
-  //   }
-  //   handleSubmit;
-  // };
+  if (user === undefined) {
+    router.push("/");
+  }
 
   // Fetch data from the API
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api'); // Adjust the endpoint as necessary
+        const response = await fetch('/api');
         const data = await response.json();
 
         if (user) {
@@ -81,8 +61,8 @@ export default function Dashboard() {
           }
         />
       </Table.Td>
-      <Table.Td>{element.id_number}</Table.Td>
-      <Table.Td>{element.id}</Table.Td>
+      {/* <Table.Td>{element.id_number}</Table.Td> */}
+      {/* <Table.Td>{element.id}</Table.Td> */}
       <Table.Td>{element.address}</Table.Td>
       <Table.Td>{element.contactPersons[0]?.name}</Table.Td>
       <Table.Td>{element.contactPersons[0]?.phone_a}</Table.Td>
@@ -97,22 +77,22 @@ export default function Dashboard() {
   return (
     <div>
       <Header />
-      <Grid>
+      <Grid style={{ padding: 40, display: "flex", justifyContent: "center" }}>
 
-        <GridCol span={12}>
+        <GridCol span={8} style={{ margin: "auto" }}>
           <Button onClick={addVisit} size="lg" leftSection={<IconListCheck size={24} />} fullWidth>
             ADD VISIT
           </Button>
         </GridCol>
 
-        <GridCol span={12}>
-          <Fieldset>
+        <GridCol span={8} style={{ margin: "auto" }} >
+          <Fieldset style={{ marginTop: 20, backgroundColor: "white" }}>
             <Table>
               <Table.Thead>
                 <Table.Tr>
                   <Table.Th />
-                  <Table.Th>ID Number</Table.Th>
-                  <Table.Th>ID</Table.Th>
+                  {/* <Table.Th>ID Number</Table.Th> */}
+                  {/* <Table.Th>ID</Table.Th> */}
                   <Table.Th>Address</Table.Th>
                   <Table.Th>Contact Person</Table.Th>
                   <Table.Th>Phone</Table.Th>
@@ -126,26 +106,32 @@ export default function Dashboard() {
           </Fieldset>
         </GridCol>
 
-        <GridCol span={12}>
-          <Button size="md" leftSection={<IconDownload size={20} />} fullWidth>
+        <GridCol span={8} style={{ margin: "auto" }}>
+          <Button style={{ marginTop: 20 }} size="md" leftSection={<IconDownload size={20} />} fullWidth>
             EXPORT ALL DATA
           </Button>
         </GridCol>
 
-        <GridCol span={6}>
-          <Button leftSection={<IconDownload size={16} />} fullWidth>
+        <GridCol span={12}></GridCol>
+        <GridCol span={2}></GridCol>
+
+        <GridCol span={4} style={{ marginLeft: 0 }}>
+          <Button size="md" leftSection={<IconDownload size={16} />} fullWidth >
             HERD AND INDIVID DATA
           </Button>
         </GridCol>
 
-        <GridCol span={6}>
-          <Button leftSection={<IconDownload size={16} />} fullWidth>
+        <GridCol span={4} style={{ marginRight: 0 }}>
+          <Button size="md" leftSection={<IconDownload size={16} />} fullWidth >
             GROUP AND ADDITIONAL DATA
           </Button>
         </GridCol>
 
-        <GridCol span={12}>
-          <Button size="md" style={{ marginTop: 50 }} leftSection={<IconDownload size={20} />} fullWidth>
+        <GridCol span={2}></GridCol>
+        <GridCol span={12}></GridCol>
+
+        <GridCol span={8} style={{ margin: "auto", marginTop: 20 }}>
+          <Button style={{}} size="md" leftSection={<IconCalculator size={20} />} fullWidth>
             CALCULATE AND UPDATE SCORES IN DATABASE
           </Button>
         </GridCol>

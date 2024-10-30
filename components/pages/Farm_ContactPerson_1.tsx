@@ -1,15 +1,23 @@
-import { Button, Checkbox, Fieldset, Grid, GridCol, TextInput, Title } from "@mantine/core";
+import { Checkbox, Fieldset, Grid, GridCol, TextInput, Title } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { defaultFarm, Farm } from "../../forms/farm_1";
 import { defaultContactPerson, ContactPerson } from "../../forms/contactPerson_1";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { useRouter } from "next/navigation";
 
 export default function FirstPage() {
+  const { user, isLoading } = useUser();
+  const router = useRouter();
 
-  const { user } = useUser();
-  console.log(user)
-  // TODO @IVAR: Fix this by routing person back to login
-  if (user === undefined) throw Error()
+  // // TODO: @IVAR: Fix this by routing person back to login
+  // useEffect(() => {
+  //   if (!isLoading && !user) {
+  //     router.push("/");
+  //   } else {
+  //     throw Error();
+  //   } [user, isLoading, router]
+  // })
+
 
   const [farmData, setFarmData] = useState<Farm>(() => {
     const savedFarmData = localStorage.getItem("farmData");
@@ -21,8 +29,6 @@ export default function FirstPage() {
     return savedContactPersonData ? JSON.parse(savedContactPersonData) : defaultContactPerson();
   });
 
-
-
   // Store `farmData` in localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("farmData", JSON.stringify(farmData));
@@ -32,7 +38,6 @@ export default function FirstPage() {
   useEffect(() => {
     localStorage.setItem("contactPersonData", JSON.stringify(contactPersonData));
   }, [contactPersonData]);
-
 
   return (
     <Fieldset>
@@ -44,13 +49,21 @@ export default function FirstPage() {
 
         <GridCol span={6}>
           <TextInput
+            label="ID Number"
+            value={farmData.id_number}
+            onChange={(e) => setFarmData({ ...farmData, id_number: e.target.value })}
+          />
+        </GridCol>
+
+        <GridCol span={6}>
+          <TextInput
             label="Country"
             value={farmData.country || ""}
             onChange={(e) => setFarmData({ ...farmData, country: e.target.value })}
           />
         </GridCol>
 
-        <GridCol span={6}>
+        <GridCol span={12}>
           <TextInput
             label="Address"
             value={farmData.address || ""}
@@ -87,14 +100,6 @@ export default function FirstPage() {
             label="Actual Visit Date"
             value={farmData.visit_date_actual || ""}
             onChange={(e) => setFarmData({ ...farmData, visit_date_actual: e.target.value })}
-          />
-        </GridCol>
-
-        <GridCol span={6}>
-          <TextInput
-            label="ID"
-            value={farmData.id_number}
-            onChange={(e) => setFarmData({ ...farmData, id_number: e.target.value })}
           />
         </GridCol>
 

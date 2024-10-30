@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from 'react';
@@ -19,6 +18,7 @@ import Header from '../../components/header/Header';
 
 export default function AddVisit() {
   const [activePage, setActivePage] = useState(1);
+
 
   // Define keys for each dataset
   const dataSets = [
@@ -133,6 +133,8 @@ export default function AddVisit() {
         siblings={7}
         total={11}
         color='#009a80'
+        style={{ paddingTop: 40 }}
+        size="lg"
       >
         <Group gap={9} justify="center">
           <Pagination.First />
@@ -151,10 +153,10 @@ export default function AddVisit() {
       <br />
       <Grid>
         <GridCol span={6}>
-          <Button fullWidth onClick={handlePreviousPage}>Previous</Button>
+          <Button size="md" fullWidth onClick={handlePreviousPage}>Previous</Button>
         </GridCol>
         <GridCol span={6}>
-          <Button fullWidth onClick={activePage === 11 ? handleSubmit : handleNextPage}>
+          <Button size="md" fullWidth onClick={activePage === 11 ? handleSubmit : handleNextPage}>
             {activePage === 11 ? "Submit" : "Next"}
           </Button>
         </GridCol>
