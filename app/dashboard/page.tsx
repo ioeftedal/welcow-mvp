@@ -6,11 +6,38 @@ import Footer from "../../components/footer/Footer";
 import { IconCheck, IconDownload, IconListCheck, IconX } from '@tabler/icons-react';
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { Farm } from "../../forms/farm_1";
 
 export default function Dashboard() {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const [elements, setElements] = useState<any[]>([]);
   const router = useRouter();
+  const { user } = useUser();
+
+
+  // // Handle form submission and send each key's data in the request body
+  // const handleSubmit = async (e: React.SyntheticEvent) => {
+  //   e.preventDefault();
+  //   if (user) {
+  //     const formData = user.sub;
+  //     try {
+  //       const response = await fetch('/api', {
+  //         method: 'POST',
+  //         headers: { 'Content-Type': 'application/json' },
+  //         body: JSON.stringify(formData) // Send each section as a separate key in the body
+  //       });
+  //       if (response.ok) {
+  //         console.log("Data posted successfully!");
+  //       } else {
+  //         console.error("Failed to post data:", response.statusText);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error posting data:", error);
+  //     }
+  //   }
+  //   handleSubmit;
+  // };
 
   // Fetch data from the API
   useEffect(() => {
@@ -18,14 +45,19 @@ export default function Dashboard() {
       try {
         const response = await fetch('/api'); // Adjust the endpoint as necessary
         const data = await response.json();
-        setElements(Array.isArray(data) ? data : []);
+
+        if (user) {
+          const filteredData = data.filter((element: Farm) => element.user_id === user.sub);
+          setElements(Array.isArray(filteredData) ? filteredData : []);
+        }
+
       } catch (error) {
         console.error("Failed to fetch data:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [user]);
 
   const addVisit = () => {
     router.push("/add-visit");

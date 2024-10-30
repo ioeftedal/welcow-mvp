@@ -15,7 +15,7 @@ datasource db {
 
 model Farm {
   id                         String                       @id @default(uuid()) @db.Uuid
-  user_id                    String                       @default(uuid()) @db.Uuid
+  user_id                    String
   country                    String?
   address                    String?
   zip                        String?

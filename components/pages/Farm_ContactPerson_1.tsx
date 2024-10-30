@@ -2,50 +2,26 @@ import { Button, Checkbox, Fieldset, Grid, GridCol, TextInput, Title } from "@ma
 import { useEffect, useState } from "react";
 import { defaultFarm, Farm } from "../../forms/farm_1";
 import { defaultContactPerson, ContactPerson } from "../../forms/contactPerson_1";
-import axios from 'axios';
-
-// const fetchUserData = async (userId: string) => {
-//   if (!userId) return;
-//   try {
-//     const response = await axios.get(`https://login.auth0.com/api/v2/users/${userId}`, {
-//       headers: {
-//         'Accept': 'application/json'
-//       }
-//     });
-//     console.log(response.data);
-//     return response.data;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
-// let config = {
-//   method: 'get',
-//   maxBodyLength: Infinity,
-//   url: 'https://login.auth0.com/api/v2/users/:id',
-//   headers: {
-//     'Accept': 'application/json'
-//   }
-// };
-//
-// axios.request(config)
-//   .then((response) => {
-//     console.log(JSON.stringify(response.data));
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function FirstPage() {
+
+  const { user } = useUser();
+  console.log(user)
+  // TODO @IVAR: Fix this by routing person back to login
+  if (user === undefined) throw Error()
+
   const [farmData, setFarmData] = useState<Farm>(() => {
     const savedFarmData = localStorage.getItem("farmData");
-    return savedFarmData ? JSON.parse(savedFarmData) : defaultFarm();
+    return savedFarmData ? JSON.parse(savedFarmData) : defaultFarm(user.sub);
   });
 
   const [contactPersonData, setContactPerson] = useState<ContactPerson>(() => {
     const savedContactPersonData = localStorage.getItem("contactPersonData");
     return savedContactPersonData ? JSON.parse(savedContactPersonData) : defaultContactPerson();
   });
+
+
 
   // Store `farmData` in localStorage whenever it changes
   useEffect(() => {
@@ -57,18 +33,6 @@ export default function FirstPage() {
     localStorage.setItem("contactPersonData", JSON.stringify(contactPersonData));
   }, [contactPersonData]);
 
-
-  // useEffect(() => {
-  //   const userId = "some-user-id"; // Replace this with the actual user ID
-  //   const loadUserData = async () => {
-  //     const userData = await fetchUserData(userId);
-  //     if (userData) {
-  //       setFarmData(prevData => ({ ...prevData, user_id: userData.user_id }));
-  //     }
-  //   };
-  //   loadUserData();
-  // }, []);
-  //
 
   return (
     <Fieldset>

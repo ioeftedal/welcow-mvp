@@ -1,3 +1,4 @@
+import { useUser } from "@auth0/nextjs-auth0/client";
 import { AvoidanceDistanceTest, ClinicalScoring, ContactPerson, Group, Herd, PreVisit, Resources, Score, SocialBehaviourAndCoughing, WaterPoint } from "@prisma/client";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -24,10 +25,13 @@ export interface Farm {
   clinicalScoring: ClinicalScoring[];
 }
 
-export function defaultFarm(): Farm {
+export function defaultFarm(userID: string | null | undefined): Farm {
+  if (userID === null) throw Error
+  if (userID === undefined) throw Error
+  console.log("Bobr", userID)
   return {
-    id: uuidv4(), // You'll need to replace this with an actual UUID generation method
-    user_id: uuidv4(), // You'll need to replace this with an actual UUID generation method
+    id: uuidv4(),
+    user_id: userID,
     visit_date_arranged: new Date().toISOString(),
     id_number: '',
     visit_completed: false,
