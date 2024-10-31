@@ -13,6 +13,7 @@ import EighthPage from '../../components/pages/Resources_WaterPoint_8';
 import NinthPage from '../../components/pages/ClinicalScoring_9';
 import TenthPage from '../../components/pages/Score_10';
 import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
 
 
 export default function AddVisit() {
@@ -130,7 +131,7 @@ export default function AddVisit() {
         siblings={7}
         total={10}
         color='#009a80'
-        style={{ paddingTop: 40 }}
+        style={{ paddingTop: 40, paddingBlock: 40 }}
         size="lg"
       >
         <Group gap={9} justify="center">
@@ -141,23 +142,29 @@ export default function AddVisit() {
           <Pagination.Last />
         </Group>
       </Pagination.Root>
-      <br />
-      <br />
 
-      {renderPage()}
-
-      <br />
-      <br />
       <Grid>
-        <GridCol span={6}>
+        <GridCol span={2}></GridCol>
+        <GridCol span={8}>
+          {renderPage()}
+        </GridCol>
+        <GridCol span={2}></GridCol>
+      </Grid>
+
+      <Grid style={{ marginTop: 50 }}>
+        <GridCol span={2}></GridCol>
+        <GridCol span={4}>
           <Button size="md" fullWidth onClick={handlePreviousPage}>Previous</Button>
         </GridCol>
-        <GridCol span={6}>
+        <GridCol span={4}>
           <Button size="md" fullWidth onClick={activePage === 11 ? handleSubmit : handleNextPage}>
             {activePage === 10 ? "Submit" : "Next"}
           </Button>
         </GridCol>
+        <GridCol span={2}></GridCol>
       </Grid>
+
+      <Footer />
 
     </div>
   );

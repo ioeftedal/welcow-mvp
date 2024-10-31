@@ -10,6 +10,7 @@ export const theme = createTheme({
         root: {
           backgroundColor: "#009a80",
           color: "white",
+          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)', // Subtle shadow for a slight raised effect
         }
       }
     },

@@ -26,22 +26,27 @@ export default function Header() {
 
       <GridCol span="content" style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '10px' }}>
         <Button
-          style={{ height: 50 }}
+          style={{
+            height: 50,
+          }}
           component="a"
           href="/dashboard"
           leftSection={<IconHomeFilled size={18} />}
         >
-          Dashboard
+          DASHBOARD
         </Button>
 
         <Button
-          style={{ height: 50, backgroundColor: "#e75244" }}
+          style={{
+            height: 50,
+            backgroundColor: "#e75244",
+          }}
           onClick={deleteLocalStorage}
           component="a"
           href="api/auth/logout"
           leftSection={<IconLogout2 size={18} />}
         >
-          Log Out
+          LOG OUT
         </Button>
       </GridCol>
     </Grid>
