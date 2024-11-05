@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 export interface Group {
   id: number;
   group_name: string;

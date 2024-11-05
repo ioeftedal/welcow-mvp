@@ -45,7 +45,7 @@ export default function Login() {
         <Image
           src="nmbu_green.png"
           style={{ display: "flex", margin: "auto", width: 170, height: 170 }}
-          alt="logo"
+          alt="nmbu_logo"
         />
       </GridCol>
 

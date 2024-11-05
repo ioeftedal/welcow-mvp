@@ -1,27 +1,52 @@
-import { Anchor, Grid, GridCol, Text } from "@mantine/core";
-import { IconSnowflake } from "@tabler/icons-react";
+import { Text, Container, ActionIcon, Group, rem, Image } from '@mantine/core';
+import classes from './FooterLinks.module.css';
 
-export default function Footer() {
+const data = [
+
+  {
+    title: 'Kontakt',
+    links: [
+      { label: 'eik-lab@nmbu.no', link: 'eik-lab@nmbu.no' },
+    ],
+  },
+];
+
+export default function FooterLinks() {
+  const groups = data.map((group) => {
+    const links = group.links.map((link, index) => (
+      <Text<'a'>
+        key={index}
+        className={classes.link}
+        component="a"
+        href={link.link}
+        onClick={(event) => event.preventDefault()}
+      >
+        {link.label}
+      </Text>
+    ));
+
+    return (
+      <div className={classes.wrapper} key={group.title}>
+        <Text className={classes.title}>{group.title}</Text>
+        {links}
+      </div>
+    );
+  });
+
   return (
-    <Grid
-      style={{
-        position: "relative",
-        bottom: 0,
-        width: "100%",
-        backgroundColor: "#009a80",
-        color: "white",
-        height: 200,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 50,
-        zIndex: 1000,
-      }}
-    >
-      <GridCol style={{ display: "flex", justifyContent: "center", alignItems: "center" }} span="auto">
-        <Anchor size="lg" href="https://www.eiklab.no/" style={{ color: "white" }}>Made by Eik </Anchor>
-        <IconSnowflake size={16} style={{ marginLeft: 5 }} />
-      </GridCol>
-    </Grid>
+    <footer className={classes.footer}>
+      <Container className={classes.inner}>
+        <div className={classes.logo}>
+          <Image alt="eik_logo" src="eik_logo.svg" />
+        </div>
+        <div className={classes.groups}>{groups}</div>
+      </Container>
+      <Container className={classes.afterFooter}>
+        <Text c="dimmed" size="sm">
+          © 2024 Norwegian University of Life Sciences. All rights reserved.
+        </Text>
+
+      </Container>
+    </footer>
   );
 }

@@ -144,14 +144,14 @@ export default function AddVisit() {
       </Pagination.Root>
 
       <Grid>
-        <GridCol span={2}></GridCol>
-        <GridCol span={8}>
+        <GridCol span={{ xs: 0, sm: 1, md: 2, lg: 2 }}></GridCol>
+        <GridCol span={{ xs: 12, sm: 10, md: 8, lg: 8 }}>
           {renderPage()}
         </GridCol>
-        <GridCol span={2}></GridCol>
+        <GridCol span={{ xs: 0, sm: 1, md: 2, lg: 2 }}></GridCol>
       </Grid>
 
-      <Grid style={{ marginTop: 50 }}>
+      <Grid style={{ marginTop: 50, marginBottom: 100 }}>
         <GridCol span={2}></GridCol>
         <GridCol span={4}>
           <Button size="md" fullWidth onClick={handlePreviousPage}>Previous</Button>
@@ -163,8 +163,6 @@ export default function AddVisit() {
         </GridCol>
         <GridCol span={2}></GridCol>
       </Grid>
-
-      <Footer />
 
     </div>
   );

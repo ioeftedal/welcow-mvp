@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button, Checkbox, Fieldset, Grid, GridCol, Table } from "@mantine/core";
@@ -7,6 +8,7 @@ import { IconCalculator, IconCheck, IconDownload, IconListCheck, IconX } from '@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { useMediaQuery } from "@mantine/hooks";
 import { Farm } from "../../forms/farm_1";
 
 export default function Dashboard() {
@@ -14,6 +16,11 @@ export default function Dashboard() {
   const [elements, setElements] = useState<any[]>([]);
   const router = useRouter();
   const { user } = useUser();
+
+  // Check screen size for responsive columns
+  const isSmallScreen = useMediaQuery('(min-width: 520px)');
+  const isMediumScreen = useMediaQuery('(min-width: 768px)');
+  const isLargeScreen = useMediaQuery('(min-width: 1024px)');
 
   if (user === undefined) {
     router.push("/");
@@ -61,13 +68,11 @@ export default function Dashboard() {
           }
         />
       </Table.Td>
-      {/* <Table.Td>{element.id_number}</Table.Td> */}
-      {/* <Table.Td>{element.id}</Table.Td> */}
-      <Table.Td>{element.address}</Table.Td>
-      <Table.Td>{element.contactPersons[0]?.name}</Table.Td>
-      <Table.Td>{element.contactPersons[0]?.phone_a}</Table.Td>
-      <Table.Td>{element.visit_date_arranged}</Table.Td>
-      <Table.Td>{element.visit_completed ? <IconCheck /> : <IconX />}</Table.Td>
+      {isMediumScreen && <Table.Td>{element.address}</Table.Td>}
+      {isLargeScreen && <Table.Td>{element.contactPersons[0]?.name}</Table.Td>}
+      {isLargeScreen && <Table.Td>{element.contactPersons[0]?.phone_a}</Table.Td>}
+      {isMediumScreen && <Table.Td>{element.visit_date_arranged}</Table.Td>}
+      {isSmallScreen && <Table.Td>{element.visit_completed ? <IconCheck /> : <IconX />}</Table.Td>}
       <Table.Td>
         <Button leftSection={<IconListCheck size={14} />}>View</Button>
       </Table.Td>
@@ -77,8 +82,7 @@ export default function Dashboard() {
   return (
     <div>
       <Header />
-      <Grid style={{ padding: 40, display: "flex", justifyContent: "center" }}>
-
+      <Grid style={{ display: "flex", justifyContent: "center", paddingTop: 40 }}>
         <GridCol span={8} style={{ margin: "auto" }}>
           <Button onClick={addVisit} size="lg" leftSection={<IconListCheck size={24} />} fullWidth>
             ADD VISIT
@@ -91,13 +95,11 @@ export default function Dashboard() {
               <Table.Thead>
                 <Table.Tr>
                   <Table.Th />
-                  {/* <Table.Th>ID Number</Table.Th> */}
-                  {/* <Table.Th>ID</Table.Th> */}
-                  <Table.Th>Address</Table.Th>
-                  <Table.Th>Contact Person</Table.Th>
-                  <Table.Th>Phone</Table.Th>
-                  <Table.Th>Arranged Visit Date</Table.Th>
-                  <Table.Th>Completed</Table.Th>
+                  {isMediumScreen && <Table.Th>Address</Table.Th>}
+                  {isLargeScreen && <Table.Th>Contact Person</Table.Th>}
+                  {isLargeScreen && <Table.Th>Phone</Table.Th>}
+                  {isMediumScreen && <Table.Th>Arranged Visit Date</Table.Th>}
+                  {isSmallScreen && <Table.Th>Completed</Table.Th>}
                   <Table.Th></Table.Th>
                 </Table.Tr>
               </Table.Thead>
@@ -112,30 +114,27 @@ export default function Dashboard() {
           </Button>
         </GridCol>
 
-        <GridCol span={12}></GridCol>
+        <GridCol></GridCol>
         <GridCol span={2}></GridCol>
 
         <GridCol span={4} style={{ marginLeft: 0 }}>
-          <Button size="md" leftSection={<IconDownload size={16} />} fullWidth >
-            HERD AND INDIVID DATA
+          <Button size="md" leftSection={<IconDownload size={16} />} fullWidth>
+            HERD DATA
           </Button>
         </GridCol>
-
         <GridCol span={4} style={{ marginRight: 0 }}>
-          <Button size="md" leftSection={<IconDownload size={16} />} fullWidth >
-            GROUP AND ADDITIONAL DATA
+          <Button size="md" leftSection={<IconDownload size={16} />} fullWidth>
+            GROUP DATA
           </Button>
         </GridCol>
 
         <GridCol span={2}></GridCol>
-        <GridCol span={12}></GridCol>
 
         <GridCol span={8} style={{ margin: "auto", marginTop: 20 }}>
-          <Button style={{}} size="md" leftSection={<IconCalculator size={20} />} fullWidth>
-            CALCULATE AND UPDATE SCORES IN DATABASE
+          <Button size="md" leftSection={<IconCalculator size={20} />} fullWidth>
+            CALCULATE AND UPDATE SCORES
           </Button>
         </GridCol>
-
       </Grid>
       <Footer />
     </div>

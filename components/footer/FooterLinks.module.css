@@ -1,0 +1,96 @@
+.footer {
+  margin-top: 7.5rem; /* Replace rem(120px) with 7.5rem */
+  padding-top: calc(var(--mantine-spacing-xl) * 2);
+  padding-bottom: calc(var(--mantine-spacing-xl) * 2);
+  background-color: var(
+    --mantine-color-gray-0
+  ); /* Adjust this based on your theme logic */
+  border-top: 1px solid var(--mantine-color-gray-2); /* Adjust this based on your theme logic */
+}
+
+.logo {
+  max-width: 8rem; /* Replace rem(200px) with 12.5rem */
+
+  @media (max-width: var(--mantine-breakpoint-sm)) {
+    /* Replace $mantine-breakpoint-sm with --mantine-breakpoint-sm */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.description {
+  margin-top: 0.3125rem; /* Replace rem(5px) with 0.3125rem */
+
+  @media (max-width: var(--mantine-breakpoint-sm)) {
+    margin-top: var(--mantine-spacing-xs);
+    text-align: center;
+  }
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: var(--mantine-breakpoint-sm)) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.groups {
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (max-width: var(--mantine-breakpoint-sm)) {
+    display: none;
+  }
+}
+
+.wrapper {
+  width: 10rem; /* Replace rem(160px) with 10rem */
+}
+
+.link {
+  display: block;
+  color: var(
+    --mantine-color-gray-6
+  ); /* Adjust this based on your theme logic */
+  font-size: var(--mantine-font-size-sm);
+  padding-top: 0.1875rem; /* Replace rem(3px) with 0.1875rem */
+  padding-bottom: 0.1875rem; /* Replace rem(3px) with 0.1875rem */
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  font-size: var(--mantine-font-size-lg);
+  font-weight: 700;
+  font-family:
+    Greycliff CF,
+    var(--mantine-font-family);
+  margin-bottom: calc(var(--mantine-spacing-xs) / 2);
+  color: var(--mantine-color-black); /* Adjust this based on your theme logic */
+}
+
+.afterFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--mantine-spacing-xl);
+  padding-top: var(--mantine-spacing-xl);
+  padding-bottom: var(--mantine-spacing-xl);
+  border-top: 1px solid var(--mantine-color-gray-2); /* Adjust this based on your theme logic */
+
+  @media (max-width: var(--mantine-breakpoint-sm)) {
+    flex-direction: column;
+  }
+}
+
+.social {
+  @media (max-width: var(--mantine-breakpoint-sm)) {
+    margin-top: var(--mantine-spacing-xs);
+  }
+}

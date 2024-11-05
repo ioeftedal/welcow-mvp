@@ -1,0 +1,53 @@
+.header {
+  height: 9.75rem; /* Replace rem(60px) with 3.75rem */
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  border-bottom: 1px solid var(--mantine-color-gray-3); /* Adjust based on theme logic */
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  text-decoration: none;
+  color: var(--mantine-color-black); /* Adjust based on theme logic */
+  font-weight: 500;
+  font-size: var(--mantine-font-size-sm);
+
+  @media (max-width: var(--mantine-breakpoint-sm)) {
+    /* Adjust $mantine-breakpoint-sm */
+    height: 2.625rem; /* Replace rem(42px) with 2.625rem */
+    width: 100%;
+  }
+
+  &:hover {
+    background-color: var(
+      --mantine-color-gray-0
+    ); /* Adjust based on theme logic */
+  }
+}
+
+.subLink {
+  width: 100%;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  border-radius: var(--mantine-radius-md);
+
+  &:hover {
+    background-color: var(
+      --mantine-color-gray-0
+    ); /* Adjust based on theme logic */
+  }
+}
+
+.dropdownFooter {
+  background-color: var(
+    --mantine-color-gray-0
+  ); /* Adjust based on theme logic */
+  margin: calc(var(--mantine-spacing-md) * -1);
+  margin-top: var(--mantine-spacing-sm);
+  padding: var(--mantine-spacing-md) calc(var(--mantine-spacing-md) * 2);
+  /* padding-bottom: var(--mantine-spacing-xl); */
+  border-top: 1px solid var(--mantine-color-gray-1); /* Adjust based on theme logic */
+}
