@@ -25,13 +25,12 @@ export default function Login() {
   return (
     <Grid
       style={{
-        // backgroundColor: "#009a80",
         height: 500,
         width: 700,
         borderStyle: "solid",
         borderWidth: 2,
         borderRadius: 10,
-        borderColor: "#009a80",
+        borderColor: "#000",
         display: "flex",
         alignItems: "center",
         marginLeft: "auto",
@@ -43,15 +42,15 @@ export default function Login() {
 
       <GridCol span={12}>
         <Image
-          src="nmbu_green.png"
+          src=""
           style={{ display: "flex", margin: "auto", width: 170, height: 170 }}
-          alt="nmbu_logo"
+          alt="mowell_logo"
         />
       </GridCol>
 
       <GridCol span={12} style={{ textAlign: "center", paddingTop: 30, paddingBottom: 40 }}>
-        <Title style={{ color: "#009a80" }} fw={800}>Kutrivsel</Title>
-        <Title style={{ color: "#009a80" }} fw={800}>WelCow</Title>
+        <Title style={{ color: "#000" }} fw={800}>Kutrivsel</Title>
+        <Title style={{ color: "#000" }} fw={800}>MoWell</Title>
       </GridCol>
 
       <GridCol span={12}>

@@ -10,7 +10,6 @@ export const theme = createTheme({
         root: {
           backgroundColor: "#009a80",
           color: "white",
-          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.2)', // Subtle shadow for a slight raised effect
         }
       }
     },
@@ -44,7 +43,8 @@ export const theme = createTheme({
         root: {
           display: 'flex',
           alignItems: 'center',
-          margin: 5,
+          marginTop: 10,
+          size: "lg"
         },
         input: {
           backgroundColor: '#009a80', // Change checkbox color
@@ -67,7 +67,6 @@ export const theme = createTheme({
       styles: {
         root: {
           // Optionally add styles for the root here
-          margin: 10,
         },
         bar: {
           backgroundColor: '#009a80', // Set the track color

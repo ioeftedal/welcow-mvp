@@ -6,7 +6,7 @@ const data = [
   {
     title: 'Kontakt',
     links: [
-      { label: 'eik-lab@nmbu.no', link: 'eik-lab@nmbu.no' },
+      { label: 'LavaDino', link: '' },
     ],
   },
 ];
@@ -37,13 +37,13 @@ export default function FooterLinks() {
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <Image alt="eik_logo" src="eik_logo.svg" />
+          <Image alt="mowell_logo.svg" src=".svg" />
         </div>
         <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
-          © 2024 Norwegian University of Life Sciences. All rights reserved.
+          © 2025 MoWell AS. All rights reserved.
         </Text>
 
       </Container>

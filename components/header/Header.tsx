@@ -29,14 +29,14 @@ export default function HeaderMegaMenu() {
     <Box pb={20}>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
-          <Image alt="nmbo_logo" src={"nmbu_green.png"} style={{ maxWidth: 160 }} />
+          <Image alt="mowell_logo" src={""} style={{ maxWidth: 160 }} />
 
           <Group
             h="100%"
             gap={0}
             visibleFrom="sm"
             style={{ display: "flex", justifyContent: "center" }}>
-            <Text size='xl' style={{ color: "#009d80", fontSize: 70 }}>WelCow</Text>
+            <Text size='xl' style={{ color: "#000", fontSize: 70 }}>MoWell</Text>
           </Group>
 
           <Group visibleFrom="sm">

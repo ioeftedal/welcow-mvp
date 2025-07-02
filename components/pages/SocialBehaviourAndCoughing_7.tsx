@@ -52,7 +52,7 @@ export default function SeventhPage() {
 
         <GridCol span={0.8}></GridCol>
 
-        <GridCol span={5} style={{ backgroundColor: "#d1e8df", borderRadius: 10 }}>
+        <GridCol span={5} style={{ backgroundColor: "", borderRadius: 10 }}>
           <Fieldset style={{ justifyContent: "center" }}>
 
             <GridCol>
@@ -112,7 +112,7 @@ export default function SeventhPage() {
 
         <GridCol span={0.4}></GridCol>
 
-        <GridCol span={5} style={{ backgroundColor: "#d1e8df", borderRadius: 10 }}>
+        <GridCol span={5} style={{ backgroundColor: "", borderRadius: 10 }}>
           <Fieldset style={{ justifyContent: "center" }}>
 
             <GridCol>
